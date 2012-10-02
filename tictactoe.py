@@ -1,7 +1,7 @@
 
 # Retrieved from: http://en.literateprograms.org/Tic_Tac_Toe_(Python)?oldid=17009
 
-import operator, sys, random, time
+import operator, sys, random, time,logging
 
 def allEqual(list):
     """returns True if all the elements in a list are equal, or if the list is empty."""
@@ -18,8 +18,17 @@ class Board:
         self.field_names = '123456789'
     def output(self):
         """Display the board on screen."""
-        for line in [self.pieces[0:3], self.pieces[3:6], self.pieces[6:9]]:
-            print ' '.join(line)
+        #logging.warning(self.pieces)
+        printarray=list()
+        for i in range(0,9):
+            if self.pieces[i]==' ':
+                printarray.append(str(i+1))
+            else:
+                printarray.append(self.pieces[i])
+        print "-"*7
+        for line in [printarray[0:3], printarray[3:6], printarray[6:9]]:
+            print "|"+'|'.join(line)+"|"
+            print "-"*(2*len(line)+1)
     def winner(self):
         """Determine if one player has won the game. Returns Player_X, Player_O or None"""
         winning_rows = [[0,1,2],[3,4,5],[6,7,8], # vertical
