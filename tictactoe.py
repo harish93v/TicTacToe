@@ -98,14 +98,22 @@ def computerPlayer(board, player):
     board.makeMove(moves[-1][0], player)
 def game():
     """The game function"""
+    print "welcome to tictactoe 1.singleplayer 2.multiplayer"
+    mode = str(input())
     b = Board()
     turn = 1
     while True:
         print "%i. turn" % turn
+        print "Player1 turn"
         humanPlayer(b, Player_O)
         if b.gameOver(): 
             break
-        computerPlayer(b, Player_X)
+        if mode == "2":
+            print "Player2 turn"
+            humanPlayer(b,Player_X)
+        else:
+            print "computer turn"
+            computerPlayer(b, Player_X)
         if b.gameOver(): 
             break
         turn += 1
